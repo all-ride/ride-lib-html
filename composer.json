@@ -1,0 +1,22 @@
+{
+    "name": "pallo/lib-html",
+    "description": "HTML library of the Pallo framework",
+    "license": "MIT",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Joris Vandeweerd",
+            "email": "joris@statik.be"
+        }
+    ],
+    "require": {
+        "pallo/lib-common": ">=0.4.0",
+        "pallo/lib-form": ">=0.4.0",
+        "pallo/lib-reflection": ">=0.4.0"
+    },     
+    "autoload": {
+        "psr-0": {
+            "pallo\\library\\html\\": ["src/"]
+        }
+    }
+}
