@@ -1,0 +1,96 @@
+<?php
+
+namespace pallo\library\html\table\decorator;
+
+use pallo\library\html\table\Cell;
+use pallo\library\html\table\Row;
+use pallo\library\html\Anchor;
+
+/**
+ * Abstract decorator to create an anchor from a cell value
+ */
+abstract class AnchorDecorator extends ValueDecorator {
+
+    /**
+     * Base href attribute for the anchor
+     * @var string
+     */
+    protected $href;
+
+    /**
+     * The confirmation message
+     * @var string
+     */
+    protected $message;
+
+    /**
+     * Constructs a new anchor decorator
+     * @param string $href Base href attribute for the anchor
+     * @param string $message The confirmation message
+     * @param string|array|null $property Property of the value
+     * @param pallo\library\decorator\Decorator $decorator Decorator for the
+     * values
+     * @param pallo\library\reflection\ReflectionHelper $helper Instance of the
+     * reflection helper to resolve properties
+     * @return null
+     */
+    public function __construct($href, $message = null, $property = null, LibDecorator $decorator = null, ReflectionHelper $helper = null) {
+        parent::__construct($property, $decorator, $helper);
+
+        $this->href = $href;
+        $this->message = $message;
+    }
+
+    /**
+     * Decorates a table cell by setting an anchor to the cell based on the cell's value
+     * @param pallo\library\html\table\Cell $cell Cell to decorate
+     * @param pallo\library\html\table\Row $row Row which will contain the cell
+     * @param int $rowNumber Number of the row in the table
+     * @param array $remainingValues Array containing the values of the remaining rows of the table
+     * @return null
+     */
+    public function decorate(Cell $cell, Row $row, $rowNumber, array $remainingValues) {
+        $value = $this->getValue($cell);
+
+        $label = $this->decorateValue($value);
+        $href = $this->getHrefFromValue($value);
+
+        $anchor = new Anchor($label, $href);
+
+        $this->processAnchor($anchor, $value);
+
+        $cell->setValue($anchor->getHtml());
+    }
+
+    /**
+     * Gets the href attribute for the anchor
+     * @param mixed $value Value of the cell
+     * @return string Href attribute for the anchor
+     */
+    abstract protected function getHrefFromValue($value);
+
+    /**
+     * Hook to perform extra processing on the generated anchor
+     * @param pallo\library\html\Anchor $anchor Generated anchor for the cell
+     * @param mixed $value Value of the cell
+     * @return null
+     */
+    protected function processAnchor(Anchor $anchor, $value) {
+        $message = $this->processMessage($value);
+
+        if ($message) {
+            $anchor->setAttribute('onclick', 'return confirm(\'' . $message . '\');');
+        }
+    }
+
+	/**
+	 * Hook to process the message with the value of the cell
+     * @param mixed $value Value of the cell
+     * @return string|null The message to use for the confirmation, null for
+     * no confirmation
+     */
+    protected function processMessage($value) {
+        return $this->message;
+    }
+
+}
