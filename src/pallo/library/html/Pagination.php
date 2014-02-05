@@ -74,10 +74,10 @@ class Pagination extends AbstractElement {
     private $href;
 
     /**
-     * Onclick attribute for the page anchors
+     * onClick attribute for the page anchors
      * @var string
      */
-    private $onclick;
+    private $onClick;
 
     /**
      * Total number of pages
@@ -93,8 +93,8 @@ class Pagination extends AbstractElement {
 
     /**
      * Construct a new pagination HTML element
-     * @param int $pages number of pages
-     * @param int $page number of the current page
+     * @param integer $pages Number of pages
+     * @param integer $page Number of the current page
      * @return null
      */
     public function __construct($pages, $page) {
@@ -106,8 +106,24 @@ class Pagination extends AbstractElement {
     }
 
     /**
+     * Gets the number of pages
+     * @return integer
+     */
+    public function getPages() {
+        return $this->pages;
+    }
+
+    /**
+     * Gets the number of the current page
+     * @return integer
+     */
+    public function getPage() {
+        return $this->page;
+    }
+
+    /**
      * Sets the href attribute for each page anchor
-     * @param string $onclick
+     * @param string $href
      * @return null
      */
     public function setHref($href) {
@@ -115,12 +131,28 @@ class Pagination extends AbstractElement {
     }
 
     /**
-     * Sets the onclick attribute for each page anchor
-     * @param string $onclick
+     * Gets the href attribute for each page anchor
+     * @return string
+     */
+    public function getHref() {
+        return $this->href;
+    }
+
+    /**
+     * Sets the onClick attribute for each page anchor
+     * @param string $onClick
      * @return null
      */
-    public function setOnclick($onclick) {
-        $this->onclick = $onclick;
+    public function setOnclick($onClick) {
+        $this->onClick = $onClick;
+    }
+
+    /**
+     * Gets the onClick attribute for each page anchor
+     * @return string
+     */
+    public function getOnClick() {
+        return $this->onClick;
     }
 
     /**
@@ -255,8 +287,8 @@ class Pagination extends AbstractElement {
     private function createAnchor($label, $page, $class = null) {
         $anchor = new Anchor($label);
 
-        if ($this->onclick) {
-            $anchor->setAttribute('onclick', str_replace('%page%', $page, $this->onclick));
+        if ($this->onClick) {
+            $anchor->setAttribute('onClick', str_replace('%page%', $page, $this->onClick));
         }
         if ($this->href) {
             $anchor->setAttribute('href', str_replace('%page%', $page, $this->href));
