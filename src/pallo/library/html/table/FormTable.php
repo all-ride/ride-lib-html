@@ -17,6 +17,12 @@ use pallo\library\reflection\Callback;
 class FormTable extends ArrayTable implements ExportTable, Component {
 
     /**
+     * Name of the field for the table name
+     * @var string
+     */
+    const FIELD_NAME = 'name';
+
+    /**
      * Name of the field for the row id's
      * @var string
      */
@@ -743,10 +749,14 @@ class FormTable extends ArrayTable implements ExportTable, Component {
         }
 
         if ($form->isSubmitted()) {
-            $this->processAction($form);
-            $this->processSearch($form);
-            $this->processOrder($form);
-            $this->processPagination($form);
+            $data = $form->getData();
+
+            if (isset($data[self::FIELD_NAME]) && $data[self::FIELD_NAME] == $this->getId()) {
+                $this->processAction($form);
+                $this->processSearch($form);
+                $this->processOrder($form);
+                $this->processPagination($form);
+            }
         }
 
         $this->applySearch();
@@ -928,6 +938,10 @@ class FormTable extends ArrayTable implements ExportTable, Component {
      * @return null
     */
     public function prepareForm(FormBuilder $builder, array $options) {
+        $builder->addRow(self::FIELD_NAME, 'hidden', array(
+        	'default' => $this->getId(),
+        ));
+
         if ($this->hasActions()) {
             $options = $this->getOptionsFromKeys($this->actions);
 
