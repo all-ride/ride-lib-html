@@ -840,6 +840,9 @@ class FormTable extends ArrayTable implements ExportTable, Component {
         }
 
         $data = $form->getData();
+        if (!isset($data[self::FIELD_SEARCH_QUERY])) {
+            return;
+        }
 
         $searchQuery = trim($data[self::FIELD_SEARCH_QUERY]);
 
@@ -862,7 +865,9 @@ class FormTable extends ArrayTable implements ExportTable, Component {
 
         $data = $form->getData();
 
-        $this->setOrderMethod($data[self::FIELD_ORDER_METHOD]);
+        if (isset($data[self::FIELD_ORDER_METHOD])) {
+            $this->setOrderMethod($data[self::FIELD_ORDER_METHOD]);
+        }
     }
 
     /**
@@ -877,9 +882,8 @@ class FormTable extends ArrayTable implements ExportTable, Component {
 
         $data = $form->getData();
 
-        $number = $data[self::FIELD_PAGE_ROWS];
-        if ($number !== null) {
-            $this->setRowsPerPage($number);
+        if (isset($data[self::FIELD_PAGE_ROWS])) {
+            $this->setRowsPerPage($data[self::FIELD_PAGE_ROWS]);
         }
     }
 
