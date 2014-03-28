@@ -13,8 +13,8 @@ interface Decorator {
     /**
      * Decorates a table cell by setting a new value to the provided cell
      * object
-     * @param ride\library\html\table\Cell $cell Cell to decorate
-     * @param ride\library\html\table\Row $row Row which will contain the cell
+     * @param \ride\library\html\table\Cell $cell Cell to decorate
+     * @param \ride\library\html\table\Row $row Row which will contain the cell
      * @param int $rowNumber Number of the row in the table
      * @param array $remainingValues Array containing the values of the
      * remaining rows of the table

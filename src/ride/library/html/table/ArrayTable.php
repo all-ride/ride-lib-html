@@ -72,7 +72,7 @@ class ArrayTable extends Table {
      * decorator to set the header.
      * @param Row $row Table header row
      * @return null
-     * @throws ride\library\html\exception\TableException when trying to set
+     * @throws \ride\library\html\exception\TableException when trying to set
      * the header manually
      * @see addDecorator
      */
@@ -85,7 +85,7 @@ class ArrayTable extends Table {
      * implementation instead
      * @param Row $row Table row to add
      * @return null
-     * @throws ride\library\html\exception\TableException when trying to add a
+     * @throws \ride\library\html\exception\TableException when trying to add a
      * row manually
      */
     public function addRow(Row $row) {
@@ -105,9 +105,9 @@ class ArrayTable extends Table {
      *
      * <p>A column decorator gets a specific value from the table value and
      * formats it for the column value.</p>
-     * @param ride\library\html\table\decorator\Decorator $valueDecorator
+     * @param \ride\library\html\table\decorator\Decorator $valueDecorator
      * Decorator to decorate the values of the table into a column
-     * @param ride\library\html\table\decorator\Decorator $headerDecorator
+     * @param \ride\library\html\table\decorator\Decorator $headerDecorator
      * Decorator to decorate the header of the column
      * @param boolean $prepend Set to true to prepend the decorator instead of appending it
      * @return null
@@ -134,7 +134,7 @@ class ArrayTable extends Table {
      * <p>Group rows consist by default of a single cell with the number of
      * column decorators set as colspan. This can be altered from within your
      * group decorator.</p>
-     * @param ride\library\html\table\decorator\Decorator $groupDecorator
+     * @param \ride\library\html\table\decorator\Decorator $groupDecorator
      * Decorator to use for group rows
      * @param boolean $prepend Set to true to prepend the decorator instead of appending it
      * @return null

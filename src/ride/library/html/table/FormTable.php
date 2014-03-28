@@ -227,12 +227,12 @@ class FormTable extends ArrayTable implements ExportTable, Component {
     /**
      * Adds an action to this table
      * @param string $label Label for the action
-     * @param string|array|ride\library\Callback $callback Callback to the
+     * @param string|array|\ride\library\Callback $callback Callback to the
      * action
      * @param string $confirmationMessage Message for a confirmation dialog
      * before performing the action
      * @return null
-     * @throws ride\library\html\exception\TableException when the provided
+     * @throws \ride\library\html\exception\TableException when the provided
      * label or confirmation message is empty or invalid
      */
     public function addAction($label, $callback, $confirmationMessage = null) {
@@ -293,7 +293,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
      * Sets the search query for this table
      * @param string $query Search query
      * @return null
-     * @throws ride\library\html\exception\TableException when the search is
+     * @throws \ride\library\html\exception\TableException when the search is
      * disabled on this table
      */
     public function setSearchQuery($query) {
@@ -317,12 +317,12 @@ class FormTable extends ArrayTable implements ExportTable, Component {
      * arguments to the order callbacks. The first argumen will always be the
      * values array
      * @param string $label Label for the order method
-     * @param string|array|ride\library\Callback $callbackAscending Callback
+     * @param string|array|\ride\library\Callback $callbackAscending Callback
      * to order ascending
-     * @param string|array|ride\library\Callback $callbackDescending Callback
+     * @param string|array|\ride\library\Callback $callbackDescending Callback
      * to order descending
      * @return null
-     * @throws ride\library\html\exception\TableException when the provided
+     * @throws \ride\library\html\exception\TableException when the provided
      * label is empty or invalid
      */
     public function addOrderMethod($label, $callbackAscending, $callbackDescending) {
@@ -351,7 +351,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
      * Sets the current order method
      * @param string $label Label of the order method
      * @return null
-     * @throws ride\library\html\exception\TableException when the provided
+     * @throws \ride\library\html\exception\TableException when the provided
      * label is not set as a order method
      */
     public function setOrderMethod($label) {
@@ -374,7 +374,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
      * Sets the current order direction
      * @param string $direction Order direction
      * @return null
-     * @throws ride\library\html\exception\TableException when an invalid order
+     * @throws \ride\library\html\exception\TableException when an invalid order
      * direction has been provided
      */
     public function setOrderDirection($direction) {
@@ -415,7 +415,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
      * Sets the options for rows per page
      * @param array $options Array with different rows per page values
      * @return null
-     * @throws ride\library\html\exception\TableException when an a negative
+     * @throws \ride\library\html\exception\TableException when an a negative
      * or invalid option is provided
      */
     public function setPaginationOptions(array $options = null) {
@@ -475,9 +475,9 @@ class FormTable extends ArrayTable implements ExportTable, Component {
      * Sets the number of rows per page
      * @param integer $rowsPerPage Number of rows per page
      * @return null
-     * @throws ride\library\html\exception\TableException when the provided
+     * @throws \ride\library\html\exception\TableException when the provided
      * number of rows per page is invalid
-     * @throws ride\library\html\exception\TableException when the provided
+     * @throws \ride\library\html\exception\TableException when the provided
      * number of rows per page is not available in the pagination options
      */
     public function setRowsPerPage($rowsPerPage) {
@@ -513,9 +513,9 @@ class FormTable extends ArrayTable implements ExportTable, Component {
      * Sets the current page number
      * @param integer $page New page number
      * @return null
-     * @throws ride\library\html\exception\TableException when no pagination is
+     * @throws \ride\library\html\exception\TableException when no pagination is
      * set
-     * @throws ride\library\html\exception\TableException when the provided
+     * @throws \ride\library\html\exception\TableException when the provided
      * page number is invalid
      */
     public function setPage($page) {
@@ -553,9 +553,9 @@ class FormTable extends ArrayTable implements ExportTable, Component {
     /**
      * Adds the decorators for a export column. A column decorator gets a
      * specific value from the table value and formats it for the column value.
-     * @param ride\library\html\table\decorator\Decorator $valueDecorator
+     * @param \ride\library\html\table\decorator\Decorator $valueDecorator
      * Decorator to decorate the values of the table into a column
-     * @param ride\library\html\table\decorator\Decorator $headerDecorator
+     * @param \ride\library\html\table\decorator\Decorator $headerDecorator
      * Decorator to decorate the header of the column
      * @return null
      */
@@ -566,7 +566,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
     /**
      * Adds the group decorator to the table. Group decorators should return a
      * boolean to set whether to add the group row or not
-     * @param ride\library\html\table\decorator\Decorator $groupDecorator
+     * @param \ride\library\html\table\decorator\Decorator $groupDecorator
      * Decorator to use for group rows
      * @return null
      */
@@ -576,7 +576,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
 
     /**
      * Processes the search and order for the export
-     * @param ride\library\form\Form $form Form of the table
+     * @param \ride\library\form\Form $form Form of the table
      * @return null
      */
     public function processExport(Form $form) {
@@ -599,7 +599,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
 
     /**
      * Populates the export, generates the actual export
-     * @param ride\library\html\table\export\ExportFormat $export Format of
+     * @param \ride\library\html\table\export\ExportFormat $export Format of
      * the export
      * @return null
      */
@@ -617,7 +617,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
     /**
      * Adds the header row to the export of the table based on the header
      * decorators
-     * @param ride\library\html\table\export\ExportFormat $export Format of
+     * @param \ride\library\html\table\export\ExportFormat $export Format of
      * the export
      * @return null
      */
@@ -641,7 +641,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
     /**
      * Populates the rows of the export based on the provided values and the
      * added decorators
-     * @param ride\library\html\table\export\ExportFormat $export Format of
+     * @param \ride\library\html\table\export\ExportFormat $export Format of
      * the export
      * @return null
      */
@@ -662,7 +662,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
     /**
      * Adds a group row to the export of the table if necessairy, group
      * decorators should return a boolean to set whether to add the group row or not
-     * @param ride\library\html\table\export\ExportFormat $export Format of
+     * @param \ride\library\html\table\export\ExportFormat $export Format of
      * the export
      * @param mixed $value Value of the current row
      * @param integer $rowNumber Number of the current row
@@ -703,7 +703,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
 
     /**
      * Adds a data row to the export of the table
-     * @param ride\library\html\table\export\ExportView $exportView View of
+     * @param \ride\library\html\table\export\ExportView $exportView View of
      * the export
      * @param mixed $value Value to decorate and add as table row
      * @param integer $rowNumber Number of the current row
@@ -740,7 +740,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
     /**
      * Processes and applies the actions, search, order and pagination of this
      * table
-     * @param ride\library\form $form $form Form of the table
+     * @param \ride\library\form $form $form Form of the table
      * @return null
      */
     public function processForm(Form $form) {
@@ -817,7 +817,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
 
     /**
      * Processes and invokes the action if provided and submitted
-     * @param ride\library\form\Form $form Form of the table
+     * @param \ride\library\form\Form $form Form of the table
      * @return null
      */
     protected function processAction(Form $form) {
@@ -841,7 +841,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
 
     /**
      * Gets the search query from the form and sets it to this table
-     * @param ride\library\form\Form $form Form of the table
+     * @param \ride\library\form\Form $form Form of the table
      * @return null
      */
     protected function processSearch(Form $form) {
@@ -865,7 +865,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
 
     /**
      * Gets the order from the form and sets it to this table
-     * @param ride\library\form\Form $form Form of the table
+     * @param \ride\library\form\Form $form Form of the table
      * @return null
      */
     protected function processOrder(Form $form) {
@@ -882,7 +882,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
 
     /**
      * Gets the number of rows per page from the form and sets it to this table
-     * @param ride\library\form\Form $form Form of the table
+     * @param \ride\library\form\Form $form Form of the table
      * @return null
      */
     protected function processPagination(Form $form) {
@@ -933,7 +933,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
 
     /**
      * Prepares the form by adding field definitions
-     * @param ride\library\form\FormBuilder $builder
+     * @param \ride\library\form\FormBuilder $builder
      * @param array $options
      * @return null
     */

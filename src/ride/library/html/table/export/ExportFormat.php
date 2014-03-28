@@ -18,14 +18,14 @@ interface ExportFormat {
 
     /**
      * Adds a header row to the export
-     * @param ride\library\html\table\Row $row Header row to set
+     * @param \ride\library\html\table\Row $row Header row to set
      * @return null
      */
     public function addExportHeaderRow(Row $row);
 
     /**
      * Adds a data row to the export
-     * @param ride\library\html\table\Row $row Data row to add
+     * @param \ride\library\html\table\Row $row Data row to add
      * @param boolean $isGroupRow Flag to see if the row is a group row
      * @return null
      */
@@ -33,7 +33,7 @@ interface ExportFormat {
 
     /**
      * Finishes the export
-     * @return ride\library\filesystem\File
+     * @return \ride\library\system\file\File
      */
     public function finishExport();
 

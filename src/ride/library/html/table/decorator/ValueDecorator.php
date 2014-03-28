@@ -21,13 +21,13 @@ class ValueDecorator implements Decorator {
 
     /**
      * Decorator for the values
-     * @var ride\library\decorator\Decorator
+     * @var \ride\library\decorator\Decorator
      */
     protected $decorator;
 
     /**
      * Helper for values
-     * @var ride\library\Value
+     * @var \ride\library\Value
      */
     protected $helper;
 
@@ -40,9 +40,9 @@ class ValueDecorator implements Decorator {
     /**
      * Constructs a new decorator
      * @param string|array|null $property Property of the value
-     * @param ride\library\decorator\Decorator $decorator Decorator for the
+     * @param \ride\library\decorator\Decorator $decorator Decorator for the
      * values
-     * @param ride\library\reflection\ReflectionHelper $helper Instance of the
+     * @param \ride\library\reflection\ReflectionHelper $helper Instance of the
      * reflection helper to resolve properties
      * @return null
      */
@@ -68,8 +68,8 @@ class ValueDecorator implements Decorator {
 
     /**
      * Decorates the value of the cell through the ZiboValueDecorator
-     * @param ride\library\html\table\Cell $cell Cell to decorate
-     * @param ride\library\html\table\Row $row Row which will contain the cell
+     * @param \ride\library\html\table\Cell $cell Cell to decorate
+     * @param \ride\library\html\table\Row $row Row which will contain the cell
      * @param int $rowNumber Number of the row in the table
      * @param array $remainingValues Array containing the values of the remaining rows of the table
      * @return null
@@ -118,7 +118,7 @@ class ValueDecorator implements Decorator {
 
     /**
      * Gets the value from the cell
-     * @param ride\library\html\table\Cell $cell
+     * @param \ride\library\html\table\Cell $cell
      * @return mixed
      */
     protected function getValue(Cell $cell) {

@@ -124,7 +124,7 @@ abstract class AbstractElement implements Element {
      * Adds a style class to the style class of this element
      * @param string $class
      * @return null
-     * @throws ride\ZiboException when the provided style class is empty
+     * @throws \ride\library\html\exception\HtmlException when the provided style class is empty
      */
     public function addToClass($class) {
         $class = trim($class);
@@ -143,7 +143,7 @@ abstract class AbstractElement implements Element {
      * Removes a style class from the style class of this element
      * @param string $class
      * @return null
-     * @throws ride\ZiboException when the provided style class is empty or not a string
+     * @throws \ride\library\html\exception\HtmlException when the provided style class is empty or not a string
      */
     public function removeFromClass($class) {
         if (!is_string($class) || $class == '') {
@@ -186,7 +186,7 @@ abstract class AbstractElement implements Element {
      * @param string $attribute name of the attribute
      * @param string $value value of the attribute
      * @return null
-     * @throws ride\ZiboException when the name of attribute is empty or not a string
+     * @throws \ride\library\html\exception\HtmlException when the name of attribute is empty or not a string
      */
     public function setAttribute($attribute, $value) {
         if (!is_string($attribute) || $attribute === '') {

@@ -282,7 +282,7 @@ class Pagination extends AbstractElement {
      * @param string $label label for the anchor
      * @param int $page page number to link to
      * @param string $class style class for the anchor
-     * @return zibo\library\html\Anchor
+     * @return \ride\library\html\Anchor
      */
     private function createAnchor($label, $page, $class = null) {
         $anchor = new Anchor($label);
