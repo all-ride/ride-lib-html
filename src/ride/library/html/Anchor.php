@@ -44,7 +44,7 @@ class Anchor extends AbstractElement {
      * Sets the label of this anchor element
      * @param string $label
      * @return null
-     * @throws zibo\ZiboException when the label is empty or not a string
+     * @throws \ride\library\html\exception\HtmlException when the label is empty or not a string
      */
     public function setLabel($label) {
         if (!is_scalar($label) || $label == '') {

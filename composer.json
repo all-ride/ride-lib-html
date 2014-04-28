@@ -2,7 +2,7 @@
     "name": "ride/lib-html",
     "description": "HTML library of the Ride framework",
     "license": "MIT",
-    "version": "0.1.3",
+    "version": "0.2.0",
     "authors": [
         {
             "name": "Joris Vandeweerd",
@@ -13,9 +13,10 @@
         "ride/lib-common": ">=0.4.0",
         "ride/lib-form": ">=0.4.0",
         "ride/lib-reflection": ">=0.4.0"
-    },     
+    },
     "autoload": {
         "psr-0": {
+            "ride\\library\\decorator\\TableOptionDecorator": ["src/"],
             "ride\\library\\html\\": ["src/"]
         }
     }

@@ -41,7 +41,7 @@ abstract class ActionDecorator extends AnchorDecorator {
      * @param string $href Base href attribute for the action
      * @param string $message A confirmation message
      * @param string|array|null $property Property of the value
-     * @param ride\library\reflection\ReflectionHelper $helper Instance of the
+     * @param \ride\library\reflection\ReflectionHelper $helper Instance of the
      * reflection helper to resolve properties
      * @return null
      */
@@ -53,8 +53,8 @@ abstract class ActionDecorator extends AnchorDecorator {
 
     /**
      * Decorates the cell with the action for the value of the cell
-     * @param ride\library\html\table\Cell $cell Cell to decorate
-     * @param ride\library\html\table\Row $row Row of the cell
+     * @param \ride\library\html\table\Cell $cell Cell to decorate
+     * @param \ride\library\html\table\Row $row Row of the cell
      * @param integer $rowNumber Current row number
      * @param array $remainingValues Array containing the values of the
      * remaining rows of the table
@@ -114,7 +114,7 @@ abstract class ActionDecorator extends AnchorDecorator {
 
     /**
      * Hook to perform extra processing on the generated anchor
-     * @param ride\library\html\Anchor $anchor Generated anchor for the cell
+     * @param \ride\library\html\Anchor $anchor Generated anchor for the cell
      * @param mixed $value Value of the cell
      * @return null
      */
