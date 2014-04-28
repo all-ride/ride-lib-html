@@ -65,6 +65,12 @@ class FormTable extends ArrayTable implements ExportTable, Component {
     const ORDER_DIRECTION_DESC = 'desc';
 
     /**
+     * URL for the form of this table
+     * @var string
+     */
+    protected $formUrl;
+
+    /**
      * Flag to set whether this form has been processed or not
      * @var boolean
      */
@@ -202,6 +208,23 @@ class FormTable extends ArrayTable implements ExportTable, Component {
         $this->isExportProcessed = false;
         $this->exportColumnDecorators = array();
         $this->exportGroupDecorators = array();
+    }
+
+    /**
+     * Sets the URL for the form
+     * @param string $url
+     * @return null
+     */
+    public function setFormUrl($url) {
+        $this->formUrl = $url;
+    }
+
+    /**
+     * Gets the URL for the order direction
+     * @return string
+     */
+    public function getFormUrl() {
+        return $this->formUrl;
     }
 
     /**

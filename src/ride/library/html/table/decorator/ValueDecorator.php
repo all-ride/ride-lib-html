@@ -95,6 +95,10 @@ class ValueDecorator implements Decorator {
             $value = $this->decorator->decorate($value);
         }
 
+        if ($value === null) {
+            return '';
+        }
+
         if (is_scalar($value) || (is_object($value) && method_exists($value, '__toString'))) {
             return (string) $value;
         }
@@ -113,7 +117,7 @@ class ValueDecorator implements Decorator {
             $value = get_class($value);
         }
 
-        throw new TableException('Could not decorate value: value unsupported for display (' . $value . ')');
+        throw new TableException('Could not decorate value: value unsupported for display');
     }
 
     /**
