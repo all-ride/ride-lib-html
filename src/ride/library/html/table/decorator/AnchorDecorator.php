@@ -28,9 +28,9 @@ abstract class AnchorDecorator extends ValueDecorator {
      * @param string $href Base href attribute for the anchor
      * @param string $message The confirmation message
      * @param string|array|null $property Property of the value
-     * @param ride\library\decorator\Decorator $decorator Decorator for the
+     * @param \ride\library\decorator\Decorator $decorator Decorator for the
      * values
-     * @param ride\library\reflection\ReflectionHelper $helper Instance of the
+     * @param \ride\library\reflection\ReflectionHelper $helper Instance of the
      * reflection helper to resolve properties
      * @return null
      */
@@ -43,8 +43,8 @@ abstract class AnchorDecorator extends ValueDecorator {
 
     /**
      * Decorates a table cell by setting an anchor to the cell based on the cell's value
-     * @param ride\library\html\table\Cell $cell Cell to decorate
-     * @param ride\library\html\table\Row $row Row which will contain the cell
+     * @param \ride\library\html\table\Cell $cell Cell to decorate
+     * @param \ride\library\html\table\Row $row Row which will contain the cell
      * @param int $rowNumber Number of the row in the table
      * @param array $remainingValues Array containing the values of the remaining rows of the table
      * @return null
@@ -71,7 +71,7 @@ abstract class AnchorDecorator extends ValueDecorator {
 
     /**
      * Hook to perform extra processing on the generated anchor
-     * @param ride\library\html\Anchor $anchor Generated anchor for the cell
+     * @param \ride\library\html\Anchor $anchor Generated anchor for the cell
      * @param mixed $value Value of the cell
      * @return null
      */

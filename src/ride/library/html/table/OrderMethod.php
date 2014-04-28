@@ -11,13 +11,13 @@ class OrderMethod {
 
     /**
      * Callback to order ascending
-     * @var ride\library\Callback
+     * @var \ride\library\Callback
      */
     private $callbackAscending;
 
     /**
      * Callback to order descending
-     * @var ride\library\Callback
+     * @var \ride\library\Callback
      */
     private $callbackDescending;
 
@@ -29,9 +29,9 @@ class OrderMethod {
 
     /**
      * Constructs a new order method
-     * @param string|array|ride\library\Callback $callbackAscending Callback
+     * @param string|array|\ride\library\Callback $callbackAscending Callback
      * to order ascending
-     * @param string|array|ride\library\Callback $callbackDescending Callback
+     * @param string|array|\ride\library\Callback $callbackDescending Callback
      * to order descending
      * @param array $arguments Arguments for the callback
      * @return null
@@ -62,7 +62,7 @@ class OrderMethod {
 
     /**
      * Invokes the callback with the provided values
-     * @param ride\library\Callback $calback Callback to order the values
+     * @param \ride\library\Callback $calback Callback to order the values
      * @param array $values Values to order
      * @return array Array with the values ordered
      */
