@@ -31,12 +31,12 @@ abstract class AnchorDecorator extends ValueDecorator {
      * @param string|array|null $property Property of the value
      * @param \ride\library\decorator\Decorator $decorator Decorator for the
      * values
-     * @param \ride\library\reflection\ReflectionHelper $helper Instance of the
-     * reflection helper to resolve properties
+     * @param \ride\library\reflection\ReflectionHelper $reflectionHelper
+     * Instance of the reflection helper to resolve properties
      * @return null
      */
-    public function __construct($href, $message = null, $property = null, LibDecorator $decorator = null, ReflectionHelper $helper = null) {
-        parent::__construct($property, $decorator, $helper);
+    public function __construct($href, $message = null, $property = null, LibDecorator $decorator = null, ReflectionHelper $reflectionHelper = null) {
+        parent::__construct($property, $decorator, $reflectionHelper);
 
         $this->href = $href;
         $this->message = $message;
