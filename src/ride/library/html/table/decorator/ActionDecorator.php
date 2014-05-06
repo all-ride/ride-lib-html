@@ -42,12 +42,12 @@ abstract class ActionDecorator extends AnchorDecorator {
      * @param string $href Base href attribute for the action
      * @param string $message A confirmation message
      * @param string|array|null $property Property of the value
-     * @param \ride\library\reflection\ReflectionHelper $helper Instance of the
-     * reflection helper to resolve properties
+     * @param \ride\library\reflection\ReflectionHelper $reflectionHelper
+     * Instance of the reflection helper to resolve properties
      * @return null
      */
-    public function __construct($label, $href, $message = null, $property = null, ReflectionHelper $helper = null) {
-        parent::__construct($href, $message, $property, null, $helper);
+    public function __construct($label, $href, $message = null, $property = null, ReflectionHelper $reflectionHelper = null) {
+        parent::__construct($href, $message, $property, null, $reflectionHelper);
 
         $this->label = $label;
     }

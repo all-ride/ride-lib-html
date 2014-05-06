@@ -26,10 +26,10 @@ class ValueDecorator implements Decorator {
     protected $decorator;
 
     /**
-     * Helper for values
-     * @var \ride\library\Value
+     * Helper for value handling
+     * @var \ride\library\reflection\ReflectionHelper
      */
-    protected $helper;
+    protected $reflectionHelper;
 
     /**
      * Style class for the decorated cell
@@ -42,18 +42,18 @@ class ValueDecorator implements Decorator {
      * @param string|array|null $property Property of the value
      * @param \ride\library\decorator\Decorator $decorator Decorator for the
      * values
-     * @param \ride\library\reflection\ReflectionHelper $helper Instance of the
-     * reflection helper to resolve properties
+     * @param \ride\library\reflection\ReflectionHelper $reflectionHelper
+     * Instance of the reflection helper to resolve properties
      * @return null
      */
-    public function __construct($property = null, LibDecorator $decorator = null, ReflectionHelper $helper = null) {
-        if (!$helper) {
-            $helper = new ReflectionHelper();
+    public function __construct($property = null, LibDecorator $decorator = null, ReflectionHelper $reflectionHelper = null) {
+        if (!$reflectionHelper) {
+            $reflectionHelper = new ReflectionHelper();
         }
 
         $this->property = $property;
         $this->decorator = $decorator;
-        $this->helper = $helper;
+        $this->reflectionHelper = $reflectionHelper;
         $this->class = null;
     }
 
@@ -131,7 +131,7 @@ class ValueDecorator implements Decorator {
             return $value;
         }
 
-        return $this->helper->getProperty($value, $this->property);
+        return $this->reflectionHelper->getProperty($value, $this->property);
     }
 
 }
