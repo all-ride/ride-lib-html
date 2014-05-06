@@ -5,6 +5,7 @@ namespace ride\library\html\table\decorator;
 use ride\library\html\table\Cell;
 use ride\library\html\table\Row;
 use ride\library\html\Anchor;
+use ride\library\reflection\ReflectionHelper;
 
 /**
  * Abstract decorator to create an action
