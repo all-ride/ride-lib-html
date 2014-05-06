@@ -68,6 +68,14 @@ class ArrayTable extends Table {
     }
 
     /**
+     * Gets the values of the table
+     * @return array
+     */
+    public function getValues() {
+        return $this->values;
+    }
+
+    /**
      * Sets the header row for this table. Not implemented, use the a header
      * decorator to set the header.
      * @param Row $row Table header row
