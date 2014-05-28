@@ -142,6 +142,10 @@ class DataDecorator implements Decorator {
 
         $url = $this->getDataUrl($data);
         $title = $this->getDataTitle($data);
+        if (!$title) {
+            $title = 'Data';
+        }
+
         $teaser = $this->getDataTeaser($data);
 
         $value = '';
@@ -198,7 +202,7 @@ class DataDecorator implements Decorator {
             return get_class($data);
         }
 
-        return 'Data';
+        return null;
     }
 
     /**
