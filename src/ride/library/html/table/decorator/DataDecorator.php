@@ -264,7 +264,10 @@ class DataDecorator implements Decorator {
         }
 
         try {
-            $url = $this->imageUrlGenerator->generateUrl($image, 'crop', 50, 50);
+            $url = $this->imageUrlGenerator->generateUrl($image, 'crop', array(
+                'width' => 50,
+                'height' => 50,
+            ));
 
             $image = new Image($url);
             $image->addToClass(self::STYLE_IMAGE);
