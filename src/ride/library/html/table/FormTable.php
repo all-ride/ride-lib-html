@@ -9,6 +9,7 @@ use ride\library\html\exception\TableException;
 use ride\library\html\exception\TableNotProcessedException;
 use ride\library\html\table\decorator\Decorator;
 use ride\library\html\table\export\ExportFormat;
+use ride\library\html\Pagination;
 use ride\library\reflection\Callback;
 
 /**
@@ -492,6 +493,21 @@ class FormTable extends ArrayTable implements ExportTable, Component {
      */
     public function getPaginationUrl() {
         return $this->paginationUrl;
+    }
+
+    /**
+     * Gets a pagination object from this table
+     * @return \ride\library\html\Pagination
+     */
+    public function getPagination() {
+        if (!$this->hasPaginationOptions()) {
+            return null;
+        }
+
+        $pagination = new Pagination($this->getPages(), $this->getPage());
+        $pagination->setHref($this->getPaginationUrl());
+
+        return $pagination;
     }
 
     /**
