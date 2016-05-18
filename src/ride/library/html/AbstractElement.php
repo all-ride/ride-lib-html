@@ -66,6 +66,14 @@ abstract class AbstractElement implements Element {
     }
 
     /**
+     * Gets a string representation of this element
+     * @return string
+     */
+    public function __toString() {
+        return $this->getHtml();
+    }
+
+    /**
      * Sets the name of the tag
      * @param string $tag
      * @param boolean $hasCloseTag
