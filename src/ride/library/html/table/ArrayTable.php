@@ -109,6 +109,14 @@ class ArrayTable extends Table {
     }
 
     /**
+     * Gets the number of columns
+     * @return integer Number of columns
+     */
+    public function countColumns() {
+        return count($this->columnDecorators);
+    }
+
+    /**
      * Adds a column to the table by adding a decorator.
      *
      * <p>A column decorator gets a specific value from the table value and
