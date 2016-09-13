@@ -48,10 +48,16 @@ class FormTable extends ArrayTable implements ExportTable, Component {
     const FIELD_PAGE_ROWS = 'page-rows';
 
     /**
-     * Name of the order field
+     * Name of the order method field
      * @var string
      */
     const FIELD_ORDER_METHOD = 'order-method';
+
+    /**
+     * Name of the order direction field
+     * @var string
+     */
+    const FIELD_ORDER_DIRECTION = 'order-direction';
 
     /**
      * Ascending order direction identifier
@@ -908,7 +914,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
      * @return null
      */
     protected function processOrder(Form $form) {
-        if (!$form->hasRow(self::FIELD_ORDER_METHOD)) {
+        if (!$form->hasRow(self::FIELD_ORDER_METHOD) && !$form->hasRow(self::FIELD_ORDER_DIRECTION)) {
             return;
         }
 
@@ -916,6 +922,9 @@ class FormTable extends ArrayTable implements ExportTable, Component {
 
         if (isset($data[self::FIELD_ORDER_METHOD])) {
             $this->setOrderMethod($data[self::FIELD_ORDER_METHOD]);
+        }
+        if (isset($data[self::FIELD_ORDER_DIRECTION])) {
+            $this->setOrderDirection($data[self::FIELD_ORDER_DIRECTION]);
         }
     }
 
@@ -1007,6 +1016,13 @@ class FormTable extends ArrayTable implements ExportTable, Component {
             $builder->addRow(self::FIELD_ORDER_METHOD, 'select', array(
             	'default' => $this->orderMethod,
             	'options' => $options,
+            ));
+            $builder->addRow(self::FIELD_ORDER_DIRECTION, 'option', array(
+            	'default' => $this->orderDirection,
+            	'options' => array(
+                    self::ORDER_DIRECTION_ASC => self::ORDER_DIRECTION_ASC,
+                    self::ORDER_DIRECTION_DESC => self::ORDER_DIRECTION_DESC,
+                ),
             ));
         }
 
