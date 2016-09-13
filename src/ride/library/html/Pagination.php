@@ -2,6 +2,8 @@
 
 namespace ride\library\html;
 
+use ride\library\html\exception\HtmlException;
+
 /**
  * Pagination HTML element
  */
@@ -136,6 +138,39 @@ class Pagination extends AbstractElement {
      */
     public function getHref() {
         return $this->href;
+    }
+
+    /**
+     * Gets the link of the previous page
+     * @return string URL of the previous page or null when current page is 1
+     */
+    public function getPreviousLink() {
+        if (!$this->href) {
+            throw new HtmlException('Could not get the previous link: no href set, use setHref first');
+        }
+
+        if ($this->page <= 1) {
+            return null;
+        }
+
+        return str_replace('%page%', $this->page - 1, $this->href);
+    }
+
+    /**
+     * Gets the link of the next page
+     * @return string URL of the next page or null when current page is the last
+     * page
+     */
+    public function getNextLink() {
+        if (!$this->href) {
+            throw new HtmlException('Could not get the next link: no href set, use setHref first');
+        }
+
+        if ($this->page == $this->pages) {
+            return null;
+        }
+
+        return str_replace('%page%', $this->page + 1, $this->href);
     }
 
     /**
