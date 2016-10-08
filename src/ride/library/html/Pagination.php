@@ -103,7 +103,7 @@ class Pagination extends AbstractElement {
         parent::__construct('div');
         $this->setAttribute('class', self::STYLE_PAGINATION);
 
-        $this->pages = $pages;
+        $this->pages = max($pages, 1);
         $this->page = $page;
     }
 
