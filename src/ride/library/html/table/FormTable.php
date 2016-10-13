@@ -451,6 +451,7 @@ class FormTable extends ArrayTable implements ExportTable, Component {
     public function setPaginationOptions(array $options = null) {
         if (!$options) {
             $this->paginationOptions = null;
+
             return;
         }
 

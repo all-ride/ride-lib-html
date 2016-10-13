@@ -16,15 +16,35 @@ class HtmlParser {
     private $dom;
 
     /**
+     * Flag to see if the body should be stripped from the result
+     * @var boolean
+     */
+    private $stripBody;
+
+    /**
      * Construct this parser
-     * @param string $html the html which need parsing
+     * @param string $html HTML which need parsing
+     * @param boolean $recover Recover bad HTML
+     * @param boolean $format Format the output
      * @return null
      */
-    public function __construct($html) {
+    public function __construct($html, $recover = true, $format = true) {
+        $this->stripBody = true;
+
         $this->dom = new DOMDocument();
-        $this->dom->recover = true;
-        $this->dom->formatOutput = true;
+        $this->dom->recover = $recover;
+        $this->dom->formatOutput = $format;
         $this->dom->loadHTML($html);
+    }
+
+    /**
+     * Sets the flag to see if the body should be stripped from the result
+     * @param boolean $stripBody True to remove all html and body wrapping from
+     * the DOM processor, false to keep it
+     * @return null
+     */
+    public function setStripBody($stripBody) {
+        $this->stripBody = $stripBody;
     }
 
     /**
@@ -32,17 +52,20 @@ class HtmlParser {
      * @return string
      */
     public function getHtml() {
-        $strip = array(
-            '/^<\\?xml.+\\?>/',
-            '/<\\!\\[CDATA\\[/',
-            '/<\\!DOCTYPE.+">/',
-            '/]]>/',
-        );
-
         $rendered = $this->dom->saveXML();
-        $rendered = preg_replace($strip, '', $rendered);
-        $rendered = str_replace(array('<html>', '</html>', '<body>', '</body>'), '', $rendered);
-        $rendered = trim($rendered);
+
+        if ($this->stripBody) {
+            $strip = array(
+                '/^<\\?xml.+\\?>/',
+                '/<\\!\\[CDATA\\[/',
+                '/<\\!DOCTYPE.+">/',
+                '/]]>/',
+            );
+
+            $rendered = preg_replace($strip, '', $rendered);
+            $rendered = str_replace(array('<html>', '</html>', '<body>', '</body>'), '', $rendered);
+            $rendered = trim($rendered);
+        }
 
         return $rendered;
     }
