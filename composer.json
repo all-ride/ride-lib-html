@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-0": {
-            "ride\\library\\decorator\\TableOptionDecorator": ["src/"],
+            "ride\\library\\decorator\\": ["src/"],
             "ride\\library\\html\\": ["src/"]
         }
     }

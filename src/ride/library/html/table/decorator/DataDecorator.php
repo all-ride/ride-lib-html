@@ -2,8 +2,10 @@
 
 namespace ride\library\html\table\decorator;
 
+use ride\library\decorator\Decorator;
+use ride\library\decorator\PropertyDecorator;
 use ride\library\html\exception\TableException;
-use ride\library\html\table\decorator\Decorator;
+use ride\library\html\table\decorator\Decorator as TableDecorator;
 use ride\library\html\table\Cell;
 use ride\library\html\table\Row;
 use ride\library\html\Anchor;
@@ -15,7 +17,7 @@ use ride\library\reflection\ReflectionHelper;
 /**
  * Decorator for a generic data object
  */
-class DataDecorator implements Decorator {
+class DataDecorator implements TableDecorator {
 
     /**
      * Path to the default data image
@@ -103,10 +105,15 @@ class DataDecorator implements Decorator {
     /**
      * Maps a property name of the data to a field for the decorator
      * @param string $field Name of the field (id, title, teaser or image)
-     * @param string $property Name of the property in the data
+     * @param string|\ride\library\decorator\Decorator $property Name of the
+     * property in the data or a decorator
      * @return null
      */
     public function mapProperty($field, $property) {
+        if (!$property instanceof Decorator) {
+            $property = new PropertyDecorator($property, $this->reflectionHelper);
+        }
+
         switch ($field) {
             case 'id':
                 $this->propertyId = $property;
@@ -178,7 +185,7 @@ class DataDecorator implements Decorator {
      */
     protected function getDataId($data) {
         if ($this->propertyId) {
-            return $this->reflectionHelper->getProperty($data, $this->propertyId);
+            return $this->propertyId->decorate($data);
         }
 
         return null;
@@ -191,7 +198,7 @@ class DataDecorator implements Decorator {
      */
     protected function getDataTitle($data) {
         if ($this->propertyTitle) {
-            return $this->reflectionHelper->getProperty($data, $this->propertyTitle);
+            return $this->propertyTitle->decorate($data);
         }
 
         if (is_scalar($data) || (is_object($data) && method_exists($data, '__toString'))) {
@@ -212,7 +219,7 @@ class DataDecorator implements Decorator {
      */
     protected function getDataTeaser($data) {
         if ($this->propertyTeaser) {
-            return $this->reflectionHelper->getProperty($data, $this->propertyTeaser);
+            return $this->propertyTeaser->decorate($data);
         }
 
         return null;
@@ -225,7 +232,7 @@ class DataDecorator implements Decorator {
      */
     protected function getDataImage($data) {
         if ($this->propertyImage) {
-            return $this->reflectionHelper->getProperty($data, $this->propertyImage);
+            return $this->propertyImage->decorate($data);
         }
 
         return null;

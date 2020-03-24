@@ -30,9 +30,14 @@ class TableOptionDecorator implements Decorator {
      * @param string $property Name of the value property
      * @return null
      */
-    public function __construct(ReflectionHelper $reflectionHelper, $property = null) {
+    public function __construct(ReflectionHelper $reflectionHelper, $property = null, $fieldName = null) {
+        if ($fieldName === null) {
+            $fieldName = FormTable::FIELD_ID;
+        }
+
         $this->reflectionHelper = $reflectionHelper;
         $this->property = $property;
+        $this->fieldName = $fieldName;
     }
 
     /**
@@ -45,7 +50,7 @@ class TableOptionDecorator implements Decorator {
             $value = $this->reflectionHelper->getProperty($value, $this->property);
         }
 
-        return '<input type="checkbox" name="' . FormTable::FIELD_ID . '[]" value="' . $value . '" />';
+        return '<input type="checkbox" name="' . $this->fieldName . '[]" value="' . $value . '" />';
     }
 
 }
