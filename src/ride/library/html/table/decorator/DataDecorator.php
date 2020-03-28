@@ -98,8 +98,8 @@ class DataDecorator implements TableDecorator {
         $this->imageUrlGenerator = $imageUrlGenerator;
         $this->defaultImage = $defaultImage;
 
-        $this->propertyId = 'id';
-        $this->propertyImage = 'image';
+        $this->propertyId = new PropertyDecorator('id', $this->reflectionHelper);
+        $this->propertyImage = new PropertyDecorator('image', $this->reflectionHelper);
     }
 
     /**
