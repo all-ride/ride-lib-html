@@ -22,6 +22,10 @@ class TableOptionDecorator implements Decorator {
      * @var string
      */
     protected $property;
+    /**
+     * @var mixed|string|null
+     */
+    protected $fieldName;
 
     /**
      * Constructs a new data option decorator
